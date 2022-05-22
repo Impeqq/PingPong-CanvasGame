@@ -15,9 +15,9 @@ export const SPEED = 10;
 export const BOARD_WIDTH = WIDTH * SIZE;
 export const OFFSET_Y = 0;
 export const OFFSET_X = window.innerWidth / 2 - BOARD_WIDTH / 2 - SIZE;
-export const PONG_COLOR = "#004616";
-export const PLAYER_COLOR = "#00770c";
-export const BOARD_COLOR = "#00b120";
+export const PONG_COLOR = "#ca3c3c";
+export const PLAYER_COLOR = "#6f4300";
+export const BOARD_COLOR = "#ffffff";
 
 export enum KeyCodes {
   UP = 119,
