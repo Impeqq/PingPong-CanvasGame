@@ -8,13 +8,15 @@ export const usePong = (hero: any, enemy: any, speed: any) => {
   const [yDirection, setYDirection] = useState<"up" | "bottom">("bottom");
 
   const isHero =
-    hero.x + 2 === pong.x &&
+    hero.x + 1 === pong.x &&
     (hero.y === pong.y || hero.y - 1 === pong.y || hero.y + 1 === pong.y);
   const isEnemy =
-    enemy.x - 2 === pong.x &&
+    enemy.x - 1 === pong.x &&
     (enemy.y === pong.y || enemy.y - 1 === pong.y || enemy.y + 1 === pong.y);
 
   useEffect(() => {
+    isHero && console.log(isHero);
+    isEnemy && console.log(isEnemy);
     const timeout = setTimeout(() => {
       if (isEnemy) setXDirection("left");
       if (isHero) setXDirection("right");
@@ -26,7 +28,13 @@ export const usePong = (hero: any, enemy: any, speed: any) => {
         setPong((pong: any) => ({
           ...pong,
           y: yDirection === "up" ? pong.y - 1 : pong.y + 1,
-          x: xDirection === "right" ? pong.x + 1 : pong.x - 1,
+          x: isEnemy
+            ? pong.x - 1
+            : isHero
+            ? pong.x + 1
+            : xDirection === "right"
+            ? pong.x + 1
+            : pong.x - 1,
         }));
       }
     }, 1000 / speed);
